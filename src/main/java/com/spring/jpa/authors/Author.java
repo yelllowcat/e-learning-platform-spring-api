@@ -1,23 +1,35 @@
 package com.spring.jpa.authors;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import com.spring.jpa.courses.Course;
+import com.spring.jpa.models.BaseEntity;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+@EqualsAndHashCode(callSuper = true)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
 @Entity
-public class Author {
+public class Author extends BaseEntity {
 
-    @Id
-    private Integer id;
+    private String firstName;
 
-    @Getter
-    @Setter
-    private String first_name;
+    private String lastName;
 
-    @Getter
-    @Setter
-    private String last_name;
+    @Column(
+            unique = true,
+            nullable = false
+    )
+    private String email;
 
+    private Integer age;
+
+    @ManyToMany(mappedBy = "authors")
+    private List<Course> courses;
 
 }

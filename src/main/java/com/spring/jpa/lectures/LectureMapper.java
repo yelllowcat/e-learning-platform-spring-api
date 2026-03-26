@@ -8,4 +8,9 @@ public class LectureMapper {
     public LectureResponseDto toLectureDto(){
         return new LectureResponseDto("Grit");
     }
+
+    public Lecture toLecture(){
+        return new Lecture();
+
+    }
 }

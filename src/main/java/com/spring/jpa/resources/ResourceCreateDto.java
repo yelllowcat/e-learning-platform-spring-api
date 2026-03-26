@@ -4,7 +4,7 @@ import java.net.URL;
 
 public record ResourceCreateDto(
         String name,
-        String size,
-        URL url
+        int size,
+        String url
 ) {
 }

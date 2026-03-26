@@ -1,27 +1,29 @@
 package com.spring.jpa.resources;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import com.spring.jpa.lectures.Lecture;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.net.URL;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class Resource {
 
     @Id
+    @GeneratedValue
     private Integer id;
 
-    @Getter
-    @Setter
     private String name;
 
-    @Getter
-    @Setter
-    private String size;
+    private int size;
 
-    @Getter
-    @Setter
-    private URL url;
+    private String url;
+
+    @OneToOne()
+    @JoinColumn(name = "lecture_id")
+    private Lecture lecture;
 }

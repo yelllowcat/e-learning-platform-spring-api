@@ -4,7 +4,7 @@ import java.net.URL;
 
 public record ResourceResponseDto(
         String name,
-        String size,
-        URL url
+        int size,
+        String url
 ) {
 }
